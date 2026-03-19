@@ -1,4 +1,6 @@
-﻿/*
+﻿using System.Security.Cryptography; //informando que usará essa biblioteca qdo o código for compilado
+
+/*
 v1
 Iremos fazer um jogo onde o usuário terá chances de acertar um número aleatório decidido pelo sistema.
 
@@ -17,6 +19,8 @@ Console.WriteLine("---------------------");
 Console.WriteLine();
 Console.Write("Digite um número: ");
 string strNumeroDigitado = Console.ReadLine();
+
+int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21); //número mínimo, número máximo + 1
 
 Console.WriteLine("O número digitado foi: " + strNumeroDigitado);
 
