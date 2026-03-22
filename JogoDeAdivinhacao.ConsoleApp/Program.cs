@@ -15,7 +15,7 @@ OutPut (saída de dados)
 int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21); //número mínimo, número máximo + 1
 bool jogoDeveContinuar = true;
 
-while (jogoDeveContinuar)
+do
 {
     Console.Clear();
     Console.WriteLine("---------------------");
@@ -53,6 +53,7 @@ while (jogoDeveContinuar)
         jogoDeveContinuar = false;
     }
 }
+while (jogoDeveContinuar);
 
 Console.ReadLine();
 
