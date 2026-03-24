@@ -12,36 +12,83 @@ OutPut (saída de dados)
     O sistema informará o usuário se o mesmo acertou ou não, podendo incluir dicas sobre a proximidade do chute.
 */
 
-int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21); //número mínimo, número máximo + 1
 bool jogoDeveContinuar = true;
 
 do
 {
     Console.Clear();
-    Console.WriteLine("---------------------");
+    Console.WriteLine("---------------------------------");
     Console.WriteLine("Jogo de Adivinhação");
-    Console.WriteLine("---------------------");
+    Console.WriteLine("---------------------------------");
+    Console.WriteLine("Escolha o nível de dificuldade:");
+    Console.WriteLine("---------------------------------");
+    Console.WriteLine("1 - Fácil (10 tentativas)");
+    Console.WriteLine("2 - Médio (5 tentativas)");
+    Console.WriteLine("3 - Difícil (3 tentativas)");
+    Console.WriteLine("---------------------------------");
 
-    Console.WriteLine();
-    Console.Write("Digite um número: ");
-    string strNumeroDigitado = Console.ReadLine();
+    Console.Write("Digite sua escolha: ");
+    string dificuldadeEscolhida = Console.ReadLine();
 
-    int numeroDigitado = Convert.ToInt32(strNumeroDigitado);
-    // poderia declarar direto int nroAleatorio = Convert.ToInt32(Console.ReadLine());
-    if (numeroAleatorio == numeroDigitado) //poderia converter direto nessa linha a string para int
+    int numeroAleatorio;
+    int tentativasMaximas;
+
+    switch (dificuldadeEscolhida)
     {
-        Console.WriteLine("Parabéns! Você acertou! O número era " + numeroAleatorio);
-        break;
+        case "1":
+            numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21);
+            tentativasMaximas = 10;
+            break;
+
+        case "2":
+            numeroAleatorio = RandomNumberGenerator.GetInt32(1, 51);
+            tentativasMaximas = 5;
+            break;
+
+        case "3":
+            numeroAleatorio = RandomNumberGenerator.GetInt32(1, 101);
+            tentativasMaximas = 3;
+            break;
+
+        default:
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("Por favor, selecione uma dificuldade válida!");
+            Console.Write("Digite Enter para continuar...");
+            Console.ReadLine();
+            continue; //para voltar ao início do loop no caso o do while
     }
 
-    else if (numeroDigitado > numeroAleatorio)
+    for (int tentativaAtual = 1; tentativaAtual <= tentativasMaximas; tentativaAtual++)
     {
-        Console.WriteLine("O número digitado fo maior que o número secreto!");
-    }
+        Console.Clear();
+        Console.WriteLine("----------------------------------");
+        Console.WriteLine("Jogo de Adivinhação");
+        Console.WriteLine("----------------------------------");
+        Console.WriteLine($"Tentativa {tentativaAtual} de {tentativasMaximas}");
+        Console.WriteLine("----------------------------------");
 
-    else
-    {
-        Console.WriteLine("O número digitado foi menor que o número secreto!");
+        Console.Write("Digite um número: ");
+        string strNumeroDigitado = Console.ReadLine();
+
+        int numeroDigitado = Convert.ToInt32(strNumeroDigitado);
+        // poderia declarar direto int nroAleatorio = Convert.ToInt32(Console.ReadLine());
+        if (numeroAleatorio == numeroDigitado) //poderia converter direto nessa linha a string para int
+        {
+            Console.WriteLine("Parabéns! Você acertou! O número era " + numeroAleatorio);
+            break;
+        }
+
+        else if (numeroDigitado > numeroAleatorio)
+        {
+            Console.WriteLine("O número digitado foi maior que o número secreto!");
+        }
+
+        else
+        {
+            Console.WriteLine("O número digitado foi menor que o número secreto!");
+        }
+
+        Console.ReadLine(); //para mostrar as dicas a cada tentativa
     }
 
     Console.WriteLine();
