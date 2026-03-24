@@ -58,6 +58,9 @@ do
             continue; //para voltar ao início do loop no caso o do while
     }
 
+    int[] numerosDigitados = new int[tentativasMaximas];
+    int contadorNrosDigitados = 0;
+
     for (int tentativaAtual = 1; tentativaAtual <= tentativasMaximas; tentativaAtual++)
     {
         Console.Clear();
@@ -68,10 +71,47 @@ do
         Console.WriteLine("----------------------------------");
 
         Console.Write("Digite um número: ");
-        string strNumeroDigitado = Console.ReadLine();
-
-        int numeroDigitado = Convert.ToInt32(strNumeroDigitado);
+        int numeroDigitado = Convert.ToInt32(Console.ReadLine());
         // poderia declarar direto int nroAleatorio = Convert.ToInt32(Console.ReadLine());
+
+        bool numeroEstaRepetido = false;
+
+        for (int indiceAtual = 0; indiceAtual < numerosDigitados.Length; indiceAtual++)
+        {
+            if (numerosDigitados[indiceAtual] == numeroDigitado)
+            {
+                numeroEstaRepetido = true;
+                break;
+            }
+        }
+
+        if (numeroEstaRepetido == true)
+        {
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("Você já digitou esse número, tente novamente.");
+            Console.WriteLine("----------------------------------");
+            Console.Write("Digite Enter para continuar...");
+            Console.ReadLine();
+
+            tentativaAtual--; //para o jogador não perder uma tentativa se caso digitar o mesmo número que já tentou
+            continue;
+        }
+
+        if (contadorNrosDigitados < numerosDigitados.Length)
+        {
+            numerosDigitados[contadorNrosDigitados] = numeroDigitado;
+            contadorNrosDigitados++;
+        }
+        else
+        {
+            numerosDigitados = new int[tentativasMaximas];
+            contadorNrosDigitados = 0;
+
+            numerosDigitados[contadorNrosDigitados] = numeroDigitado;
+            contadorNrosDigitados++;
+        }
+        //o if else acima é para garantir que nunca será tentado acessar um ponto no array que não existe
+
         if (numeroAleatorio == numeroDigitado) //poderia converter direto nessa linha a string para int
         {
             Console.WriteLine("Parabéns! Você acertou! O número era " + numeroAleatorio);
