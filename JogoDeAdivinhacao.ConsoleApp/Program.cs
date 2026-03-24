@@ -16,7 +16,7 @@ bool jogoDeveContinuar = true;
 
 do
 {
-    Console.Clear();
+    //Console.Clear();
     Console.WriteLine("---------------------------------");
     Console.WriteLine("Jogo de Adivinhação");
     Console.WriteLine("---------------------------------");
@@ -58,12 +58,14 @@ do
             continue; //para voltar ao início do loop no caso o do while
     }
 
+    int pontuacao = 1000;
+
     int[] numerosDigitados = new int[tentativasMaximas];
     int contadorNrosDigitados = 0;
 
     for (int tentativaAtual = 1; tentativaAtual <= tentativasMaximas; tentativaAtual++)
     {
-        Console.Clear();
+        //Console.Clear();
         Console.WriteLine("----------------------------------");
         Console.WriteLine("Jogo de Adivinhação");
         Console.WriteLine("----------------------------------");
@@ -128,6 +130,27 @@ do
             Console.WriteLine("O número digitado foi menor que o número secreto!");
         }
 
+        int diferencaNumerica = Math.Abs(numeroAleatorio - numeroDigitado);
+        //retornará o valor absoluto, ignorando o sinal
+        if (diferencaNumerica >= 10)
+        {
+            pontuacao -= 100; //mesmo que pontuacao = pontuacao - 100
+        }
+        else if (diferencaNumerica >= 5)
+        {
+            pontuacao -= 50;
+        }
+        else
+        {
+            pontuacao -= 20;
+        }
+
+        Console.WriteLine("----------------------------------");
+        Console.WriteLine("Sua pontuação é: " + pontuacao);
+        Console.WriteLine("----------------------------------");
+
+        Console.WriteLine("----------------------------------");
+        Console.Write("Digite Enter para continuar...");
         Console.ReadLine(); //para mostrar as dicas a cada tentativa
     }
 
