@@ -16,7 +16,7 @@ bool jogoDeveContinuar = true;
 
 do
 {
-    //Console.Clear();
+    Console.Clear();
     Console.WriteLine("---------------------------------");
     Console.WriteLine("Jogo de Adivinhação");
     Console.WriteLine("---------------------------------");
@@ -65,7 +65,7 @@ do
 
     for (int tentativaAtual = 1; tentativaAtual <= tentativasMaximas; tentativaAtual++)
     {
-        //Console.Clear();
+        Console.Clear();
         Console.WriteLine("----------------------------------");
         Console.WriteLine("Jogo de Adivinhação");
         Console.WriteLine("----------------------------------");
