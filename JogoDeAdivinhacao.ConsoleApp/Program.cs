@@ -117,6 +117,7 @@ do
         if (numeroAleatorio == numeroDigitado) //poderia converter direto nessa linha a string para int
         {
             Console.WriteLine("Parabéns! Você acertou! O número era " + numeroAleatorio);
+            Console.WriteLine("Sua pontuação foi: " + pontuacao);
             break;
         }
 
