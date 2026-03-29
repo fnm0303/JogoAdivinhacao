@@ -30,7 +30,7 @@ O jogo conta com um sistema de pontuação, onde o jogador começa com 1000 pont
 4. Em seguida compile e execute o projeto com o comando:
 
     ```
-    dotnet run --project Calculadora.ConsoleApp
+    dotnet run --project JogoDeAdivinhacao.ConsoleApp
     ```
 ## Requisitos ##
 

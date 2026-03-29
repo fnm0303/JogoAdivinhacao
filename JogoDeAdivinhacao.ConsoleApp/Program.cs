@@ -166,6 +166,6 @@ do
 }
 while (jogoDeveContinuar);
 
-Console.ReadLine();
+
 
 
